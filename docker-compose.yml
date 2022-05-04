@@ -1,0 +1,14 @@
+version: '3'
+services:
+  govee:
+    container_name: govee
+    build:
+      dockerfile: ./Dockerfile
+    image: govee:latest
+    volumes:
+      - ./src:/src
+      - ./config:/config
+      - /run/dbus:/run/dbus
+    privileged: true
+    network_mode: host
+    restart: unless-stopped
